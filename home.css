@@ -88,11 +88,11 @@ a.active, a:hover{
 }
 
 .myslider{
-    position: absolute;
     height: 450px;
     width: 100%;
-    left: 50%;
-    top: 44%;
+    margin-top: 15%;
+    margin-left: 50%;
+    margin-bottom: -10%;
     transform: translate(-50%,-50%);
     background-image: url(Images/BOOKIT.png);
     background-size: 100% 100%;
@@ -184,4 +184,49 @@ h2 {
     padding-left: 44%;
     padding-top: 10%;
     padding-bottom: 10%;
+}
+.book-intro{
+    display: flex;
+    margin-left: 15%;
+}
+.book-info{
+    margin-left:23px;
+}
+.preview{
+    padding: 1% 15%;
+}
+button{
+    padding: 20px;
+    font-size: 20px;
+    color: #fff;
+    border-color: #EBA62D ;
+    background-color:coral;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #EBA62D ;
+}
+@keyframes scroll{
+    0%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(calc(-250px*7));
+    }
+}
+.book-slider{
+    height: auto;
+    overflow: hidden;
+    /* position: relative; */
+    width: max-content;
+}
+.slide-track{
+    animation: scroll 40s linear infinite;
+    display: flex;
+    justify-content: space-evenly;
+    width: calc(250px * 14);
+}
+.books{
+    height: 280px;
+    width: 250px;
 }
