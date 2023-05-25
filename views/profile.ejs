@@ -1,0 +1,253 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/boxicons.min.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="/css/nice-select.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/meanmenu.min.css">
+    <link rel="stylesheet" href="/css/rangeSlider.min.css">
+    <link rel="stylesheet" href="/css/stylecopy.css">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    
+</head>
+
+<body>
+    <!-- Start Sticky Navbar Area -->
+    <div class="navbar-area header-sticky">
+        <div class="book-nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand" href="http://localhost:8000/">
+                        <img style="width:250px;height:60px;" src="./Images/book_it_logo.png" alt="logo">
+                    </a>
+
+                    <div class="collapse navbar-collapse mean-menu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a href="http://localhost:8000/" class="nav-link ">Home </a></li>
+                            <li class="nav-item"><a href="#" class="nav-link ">About Us </a></li>
+                            <li class="nav-item"><a href="http://localhost:8000/#booksContainer"
+                                    class="nav-link ">Read</a></li>
+                            <li class="nav-item"><a href="http://localhost:8000/newBook" class="nav-link ">Write</a>
+                            </li>
+                            <li class="nav-item"><a href="http://localhost:8000/swap" class="nav-link ">Swap</a></li>
+                        </ul>
+
+                        <div class="others-option" id="others-option">
+                            <!-- <div class="option-item">  
+                                <button>COINS</button>
+                            </div> -->
+                            <div class="option-item">
+                                <button>LOGIN</button>
+                            </div>
+                            <div class="option-item">
+                                <a href="http://localhost:8000/profile"><i class='bx bxs-user'></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="swap-page">
+        <div class="swap-buttons">
+            <div class="button1">
+                <button type="button" onclick="viewprofile()" style="padding: 10px 35px;">View Profile</button>
+            </div>
+            <div class="button1">
+                <button type="button" onclick="editprofile()" style="padding: 10px 35px;">Edit Profile</button>
+            </div>
+            <div class="button1">
+                <button onclick="purchasebooks()" style="padding: 10px 25px;">Purchased Books</button>
+            </div>
+            <div class="button1">
+                <button type="button" onclick="writebook()" style="padding: 10px 35px;">Published Books</button>
+            </div>
+            <div class="button1">
+                <button onclick="requestbooks()" style="padding: 10px 25px;">Requests</button>
+            </div>
+            <div class="button1">
+                <button onclick="subscribepack()" style="padding: 10px 25px;">Subscribe</button>
+            </div>
+            <div>
+                <img src="/Images/books_shelf.png" style="width: 90%; margin-top:4vw;">
+            </div>
+        </div>
+        <section class="signup-area" style="padding-top: 40px;">
+            <div class="container" id="view" >
+                
+            </div>
+        </section>
+        <div id="view_profile" style="display:none; margin-top: 5vh;">
+            <div class="col-lg-7 col-md-12" >
+                <div class="products-details-desc" id="test">
+            
+                    <ul class="products-info" id="userDetails">
+                        <li><span>Name:</span></li>
+                        <li><span>Email:</span></li>
+                        <li><span>Coins Available:</span></li>
+                    </ul>
+                    <br>
+                </div>
+            </div>
+                <div class="tab products-details-tab" style="border: 1px solid black;">
+                    <ul class="tabs">
+                        <li><a href="#">
+                                <div class="dot"></div> Privacy Guidelines
+                            </a></li>
+            
+            
+                        <li><a href="#">
+                                <div class="dot"></div> How to Use ?
+                            </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tabs-item">
+                            <div class="products-details-tab-content">
+                                We are committed to protecting the privacy of our users.
+                                <br>
+                                This Privacy Guidelines explains how we collect, use, and disclose information about you when you
+                                visit our website and use our services.
+                                <br>
+                                We are bound to monitor chats to Prevent and detect fraud and other illegal activities.
+                                <br>
+                                We highly recommend not to disclose any personal information while using chat feature.
+                                It is recommended to choose a public place for meetup.
+            
+                            </div>
+                        </div>
+                        <div class="tabs-item">
+                            <div class="products-details-tab-content">
+                                Read: Be a reader and enjoy choices from thousand of books
+                                Write: Be an author and get an opportunity to showcase your talent for FREE
+                                Swap: Be a memeber of book reader's community and swap books with your book-mates
+                                Chat: Chat with your book-mates and make reading more fun !!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div id="edit" style="display: none;">
+            <div class="signup-content">
+                <h2>Edit Profile</h2>
+                <div class="signup-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control ABook" name="bookhave" placeholder="Book Name You Have"
+                            id="edit-username">
+                    </div>
+            
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" name="Aubookhave" placeholder="Author Name" id="edit-email">
+                    </div>
+            
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" class="form-control" name="ExBname" placeholder="Book in Exchange" id="edit-password">
+                    </div>
+            
+                    <button class="default-btn" style="margin-top: 15px;" onclick="updateDetails()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div id="purchase" style="display:none;">
+        <h2>Purchased Books</h2>
+        <div class="book-card" style="display: flex;">
+            <div class="col-lg-2 col-md-2">
+                <div class="products-details-image">
+                    <img src="/images/hound of baskerville.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="book-char">
+                    <div>Name</div>
+                    <div>Author</div>
+                    <div>Description</div>
+                    <button style="margin-left: 0px;">Submit</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="write" style="display:none;">
+            write
+        </div>
+        <div id="request" style="display:none;">
+            request
+        </div>
+        <div id="subscribe" style="display:none;">
+            <h2>Subscription Plans</h2>
+            <div style="display:flex; padding-top:5%; padding-left:5%">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/Images/Icon-book.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pack 1</h5>
+                        <p class="card-text">INR 100</p>
+                        <p class="card-text">COINS 120</p>
+                        <a href="#" class="btn btn-primary" onclick="purchaseCoins(100,120)">PURCHASE</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/Images/Icon-03.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pack 2</h5>
+                        <p class="card-text">INR 200</p>
+                        <p class="card-text">COINS 250</p>
+                        <a href="#" class="btn btn-primary" onclick="purchaseCoins(200,250)">PURCHASE</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/Images/icon-02.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pack 3</h5>
+                        <p class="card-text">INR 500</p>
+                        <p class="card-text">COINS 600</p>
+                        <a href="#" class="btn btn-primary" onclick="purchaseCoins(500,600)">PURCHASE</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/Images/Icon-01.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pack 4</h5>
+                        <p class="card-text">INR 700</p>
+                        <p class="card-text">COINS 1000</p>
+                        <a href="#" class="btn btn-primary" onclick="purchaseCoins(700,1000)">PURCHASE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/magnific-popup.min.js"></script>
+<script src="/js/parallax.min.js"></script>
+<script src="/js/rangeSlider.min.js"></script>
+<script src="/js/nice-select.min.js"></script>
+<script src="/js/meanmenu.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/sticky-sidebar.min.js"></script>
+<script src="/js/wow.min.js"></script>
+<script src="/js/form-validator.min.js"></script>
+<script src="/js/contact-form-script.js"></script>
+<script src="/js/ajaxchimp.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script src="/js/profile.js"></script>
+</html>

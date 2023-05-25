@@ -1,0 +1,148 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/boxicons.min.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="/css/nice-select.min.css">
+    <link rel="stylesheet" href="/css/slick.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/meanmenu.min.css">
+    <link rel="stylesheet" href="/css/rangeSlider.min.css">
+    <link rel="stylesheet" href="/css/stylecopy.css">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.0.279/build/pdf.min.js"></script>
+    <title>PDF view</title>
+</head>
+<style>
+    #myCanvas {
+        margin: 5%;
+        /* border: 2px solid black; */
+        box-shadow: 2px 2px 28px 2px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .btn-grp {
+        display: flex;
+        justify-content: center;
+        margin: 0% 20% 0% 0%;
+    }
+
+    input {
+        background-color: white;
+    }
+
+    button {
+        background-color: white;
+        padding: 5px;
+        height: max-content;
+        font-size: 20px;
+        vertical-align: middle;
+        margin-top: 50%;
+    }
+
+    #canvas-class {
+        display: flex;
+        margin-left: 30%;
+        margin-right: 25%;
+        height: 100vh;
+        width: 40vw;
+    }
+</style>
+
+<body>
+    <div class="swap-page">
+        <div class="swap-buttons">
+            <div class="button1">
+                <button type="button" style="padding: 0px 35px; margin:0px;" onclick="history.back()"><a><i
+                            class='bx bx-left-arrow-alt'></i>Back</a></button>
+            </div>
+            <div style="color:white;">Current Page Number</div>
+            <div class="btn-grp">
+                <input type="number" name="" id="num-text" onchange="updatePage()" value=1>
+            </div>
+        </div>
+        <div>
+            <div id="canvas-class">
+                <button onclick="decrementPage()"><i class='bx bx-left-arrow-alt'></i></button>
+                <canvas id="myCanvas"></canvas>
+                <button onclick="incrementPage()"><i class='bx bx-right-arrow-alt'></i></button>
+            </div>
+        </div>
+</body>
+<script>
+    let totalPage;
+    const updatePage = () => {
+        const elem = document.querySelector('#num-text')
+        if (Number(elem.value) > 0 && Number(elem.value) <= totalPage) {
+            showPage()
+        } else {
+            elem.value = totalPage
+            showPage()
+        }
+    }
+    const incrementPage = () => {
+        const elem = document.querySelector('#num-text')
+        if (Number(elem.value) + 1 < totalPage) {
+            elem.value = Number(elem.value) + 1
+            showPage()
+        }
+        const elemen = document.querySelector('#myCanvas')
+        element.style.color = 'red'
+    }
+    const decrementPage = () => {
+        const elem = document.querySelector('#num-text')
+        if (Number(elem.value) - 1 > 0) {
+            elem.value = Number(elem.value) - 1
+            showPage()
+        }
+    }
+
+    const fileLocation = location.pathname.split('/')
+    console.log(`/uploadedFiles/${fileLocation}`)
+    const pdf = pdfjsLib.getDocument(`/uploadedFiles/${fileLocation[fileLocation.length - 1]}`).promise
+
+
+    function showPage() {
+
+        pdf.then(doc => {
+            // console.log("pages" + doc._pdfInfo.numPages)
+            totalPage = doc._pdfInfo.numPages
+            //console.log('PDF loaded');
+
+            // Fetch the first page
+            var pageNumber = Number(document.querySelector('#num-text').value);
+            doc.getPage(pageNumber).then(function (page) {
+                // console.log('Page loaded');
+
+                var scale = 1.5;
+                var viewport = page.getViewport({ scale: scale });
+
+                // Prepare canvas using PDF page dimensions
+                var canvas = document.getElementById('myCanvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render PDF page into canvas context
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                var renderTask = page.render(renderContext);
+                renderTask.promise.then(function () {
+                    //console.log('Page rendered');
+                });
+            });
+        })
+    }
+    showPage()
+</script>
+
+</html>
