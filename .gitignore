@@ -1,6 +1,28 @@
-<<<<<<< HEAD
+.env
+cache/
+node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
 /node_modules
-/.env
-=======
-.vscode/
->>>>>>> 124b69a8cf24418af0e571c76ff278606eb1de19
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+api/.env
+*.env
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
